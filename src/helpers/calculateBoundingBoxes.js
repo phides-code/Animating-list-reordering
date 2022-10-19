@@ -1,16 +1,20 @@
-import React from "react";
+import React from 'react';
 
-const calculateBoundingBoxes = children => {
-  const boundingBoxes = {};
+const calculateBoundingBoxes = (children) => {
+    const boundingBoxes = {};
 
-  React.Children.forEach(children, child => {
-    const domNode = child.ref.current;
-    const nodeBoundingBox = domNode.getBoundingClientRect();
+    console.log('*** abananan');
 
-    boundingBoxes[child.key] = nodeBoundingBox;
-  });
+    React.Children.forEach(children, (child) => {
+        console.log('got child: ');
+        console.dir(child);
+        const domNode = child.ref.current;
+        const nodeBoundingBox = domNode.getBoundingClientRect();
 
-  return boundingBoxes;
+        boundingBoxes[child.key] = nodeBoundingBox;
+    });
+
+    return boundingBoxes;
 };
 
 export default calculateBoundingBoxes;
